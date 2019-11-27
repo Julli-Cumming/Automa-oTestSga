@@ -39,10 +39,8 @@ public class InformaçõesUsuarioTest {
         String textoNoElementoMe = me.getText();
         assertEquals("Hi, Julio",textoNoElementoMe);
 
-
-
-
-       assertEquals(1,1);
+        //Fechar o navegador
+        navegador.close();
 
     }
 }
