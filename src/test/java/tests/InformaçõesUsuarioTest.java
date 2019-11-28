@@ -29,7 +29,6 @@ public class InformaçõesUsuarioTest {
     @Test
     public void testAdicionarUmaInformacaoAdicionalDoUsuario(){
 
-
         // Identificando o formulário Login
         WebElement formularioSignInBox = navegador.findElement(By.id("signinbox"));
 
@@ -72,6 +71,7 @@ public class InformaçõesUsuarioTest {
     }
       @After
     public void tearDown(){
+        //Fechar a navegação
          // navegador.quit();
     }
 }
