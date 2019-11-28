@@ -65,13 +65,9 @@ public class InformaçõesUsuarioTest {
         popupAddMoreData.findElement(By.linkText("SAVE")).click();
 
         //Na mensagem de id "toast-container" validar que o texto  é "Your contact has been added!"
-
-
-        //Validar que dentro do elemento com class "me" está o texto "Hi, julio"
-        //WebElement me = navegador.findElement(By.className("me"));
-       // String textoNoElementoMe = me.getText();
-       // assertEquals("Hi, Julio",textoNoElementoMe);
-
+        WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
+        String mensagem = mensagemPop.getText();
+        assertEquals("Your contact has been added!",mensagem);
 
     }
       @After
