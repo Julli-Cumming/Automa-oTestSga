@@ -10,7 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +41,7 @@ public class InformaçõesUsuarioTest {
         //Clicar em um link que possui o texto "MORE DATA ABOUT YOU'
         navegador.findElement(By.linkText("MORE DATA ABOUT YOU")).click();
     }
-    @Test
+   // @Test
     public void testAdicionarUmaInformacaoAdicionalDoUsuario(){
 
         //Clicar no botão através do seu xpath
@@ -71,24 +73,25 @@ public class InformaçõesUsuarioTest {
         assertEquals("Your contact has been added!",mensagem);
     }
 
-   // @Test
+    @Test
     public void removerUmContatoDeUmUsuario(){
         //Clicar no elemento pelo xpath //span[text()="+5571987456987"]following-sibling::a
-        navegador.findElement(By.xpath("//span[text()=\"+5571987456987\"]following-sibling::a")).click();
+        navegador.findElement(By.xpath("//span[text()=\"+5571987456987\"]/following-sibling::a")).click();
 
         //Confirmar a janela javascript
         navegador.switchTo().alert().accept();
 
         //Validar que a mensagem validada foi"Rest in peace,dear phone!"
         WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
-        String mensagemValidada = mensagemPop.getText();
-        assertEquals("Rest in peace,dear phone!",mensagemValidada);
+        String mensagem = mensagemPop.getText();
+        assertEquals("Rest in peace, dear phone!",mensagem);
 
         //Aguardar ate 10 segundos para que a janela desapareça (usa-se uma espera explicita)
+        WebDriverWait aguardar = new WebDriverWait(navegador, 10);
+        aguardar.until(ExpectedConditions.stalenessOf(mensagemPop));
 
         //Clicar no link com o texto logout
-
-
+        navegador.findElement(By.linkText("Logout")).click();
     }
       @After
     public void tearDown(){
