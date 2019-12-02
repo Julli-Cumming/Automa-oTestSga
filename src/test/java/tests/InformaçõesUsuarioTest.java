@@ -89,10 +89,11 @@ public class InformaçõesUsuarioTest {
         //Validar que a mensagem validada foi "Rest in peace,dear phone!"
         WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
         String mensagem = mensagemPop.getText();
-        //assertEquals("Rest in peace, dear phone!",mensagem);
-        assertEquals("Rest in peace, dear email!",mensagem);
+        assertEquals("Rest in peace, dear phone!",mensagem);
+       //assertEquals("Rest in peace, dear email!",mensagem);
 
-        String screenshortArquivo = "C:\\Users\\jcumming\\Downloads" + Generator.dataHoraParaArquivo() + test.getMethodName() + ".png";
+        //print da tela a qual está realizando a automação de testes
+        String screenshortArquivo = "F:\\Webdriver\\Screenshort" + Generator.dataHoraParaArquivo() + test.getMethodName() + ".png";
         Screenshort.tirar(navegador, screenshortArquivo);
 
         //Aguardar ate 10 segundos para que a janela desapareça (usa-se uma espera explicita)
