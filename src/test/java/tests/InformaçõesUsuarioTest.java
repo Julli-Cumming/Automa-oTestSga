@@ -82,7 +82,7 @@ public class InformaçõesUsuarioTest {
         //Confirmar a janela javascript
         navegador.switchTo().alert().accept();
 
-        //Validar que a mensagem validada foi"Rest in peace,dear phone!"
+        //Validar que a mensagem validada foi "Rest in peace,dear phone!"
         WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
         String mensagem = mensagemPop.getText();
         //assertEquals("Rest in peace, dear phone!",mensagem);
