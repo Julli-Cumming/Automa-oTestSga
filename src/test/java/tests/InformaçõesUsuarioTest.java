@@ -2,10 +2,8 @@ package tests;
 
 import static  org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.TestName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,11 +11,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import suporte.Generator;
+import suporte.Screenshort;
 
 import java.util.concurrent.TimeUnit;
 
 public class InformaçõesUsuarioTest {
     private  WebDriver navegador;
+
+    @Rule
+    public TestName test = new TestName();
+
     @Before
     public void setUp(){
         // Abrindo o navegador
@@ -76,8 +80,8 @@ public class InformaçõesUsuarioTest {
     @Test
     public void removerUmContatoDeUmUsuario(){
         //Clicar no elemento pelo xpath //span[text()="+5571987456987"]following-sibling::a
-        //navegador.findElement(By.xpath("//span[text()=\"+5571987456987\"]/following-sibling::a")).click();
-        navegador.findElement(By.xpath("//span[text()=\"teste2020@gmail.com\"]/following-sibling::a")).click();
+        navegador.findElement(By.xpath("//span[text()=\"+5571987456987\"]/following-sibling::a")).click();
+        //navegador.findElement(By.xpath("//span[text()=\"teste2020@gmail.com\"]/following-sibling::a")).click();
 
         //Confirmar a janela javascript
         navegador.switchTo().alert().accept();
@@ -87,6 +91,9 @@ public class InformaçõesUsuarioTest {
         String mensagem = mensagemPop.getText();
         //assertEquals("Rest in peace, dear phone!",mensagem);
         assertEquals("Rest in peace, dear email!",mensagem);
+
+        String screenshortArquivo = "C:\\Users\\jcumming\\Downloads" + Generator.dataHoraParaArquivo() + test.getMethodName() + ".png";
+        Screenshort.tirar(navegador, screenshortArquivo);
 
         //Aguardar ate 10 segundos para que a janela desapareça (usa-se uma espera explicita)
         WebDriverWait aguardar = new WebDriverWait(navegador, 10);
