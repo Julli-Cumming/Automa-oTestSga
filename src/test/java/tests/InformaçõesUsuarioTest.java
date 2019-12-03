@@ -80,8 +80,8 @@ public class InformaçõesUsuarioTest {
     @Test
     public void removerUmContatoDeUmUsuario(){
         //Clicar no elemento pelo xpath //span[text()="+5571987456987"]following-sibling::a
-        navegador.findElement(By.xpath("//span[text()=\"+5571987456987\"]/following-sibling::a")).click();
-        //navegador.findElement(By.xpath("//span[text()=\"teste2020@gmail.com\"]/following-sibling::a")).click();
+       // navegador.findElement(By.xpath("//span[text()=\"+5571987456987\"]/following-sibling::a")).click();
+        navegador.findElement(By.xpath("//span[text()=\"teste2020@gmail.com\"]/following-sibling::a")).click();
 
         //Confirmar a janela javascript
         navegador.switchTo().alert().accept();
@@ -89,8 +89,8 @@ public class InformaçõesUsuarioTest {
         //Validar que a mensagem validada foi "Rest in peace,dear phone!"
         WebElement mensagemPop = navegador.findElement(By.id("toast-container"));
         String mensagem = mensagemPop.getText();
-        assertEquals("Rest in peace, dear phone!",mensagem);
-       //assertEquals("Rest in peace, dear email!",mensagem);
+        //assertEquals("Rest in peace, dear phone!",mensagem);
+        assertEquals("Rest in peace, dear email!",mensagem);
 
         //print da tela a qual está realizando a automação de testes
         String screenshortArquivo = "F:\\Webdriver\\Screenshort" + Generator.dataHoraParaArquivo() + test.getMethodName() + ".png";
@@ -106,6 +106,6 @@ public class InformaçõesUsuarioTest {
       @After
     public void tearDown(){
         //Fechar a navegação
-          navegador.quit();
+          //navegador.quit();
     }
 }
